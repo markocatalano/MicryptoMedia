@@ -1,11 +1,45 @@
+import { useEffect, useState } from 'react';
 import media from '../.././assets/media.jpg';
+import { Remeras } from '../Arreglo/Arreglo';
+import { ItemList } from '../ItemList/ItemList';
 
 
 export const ItemListContainer=(props)=>{
+
+    const [remeras, setRemeras] = useState([]);
+
+    const listadoRemeras =()=>{
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>{
+                resolve(Remeras)
+            }, 2000);
+                
+        })
+    }
+
+    useEffect(()=>{
+        const funcionAsincrona= async()=>{
+            try {
+                const listado = await listadoRemeras()
+                setRemeras(listado);
+                console.log('listado', listado)
+            }
+            catch (error) {
+                console.log('Hubo un error')
+            }
+        }
+        funcionAsincrona();
+    },[])
+
     return(
-        <div style={{fontSize:'20px', margin: '40px'}}>
-            <h1>{props.greeting} a CryptoMedias</h1>
-            {/* <img src={media} alt="" height='500px' width='500px'></img> */}
+        <div className='d-flex flex-row m-5'>
+            {
+                remeras.map((remeraCrypto)=>{
+                    return(
+                            <ItemList remera={remeraCrypto}></ItemList>    
+                    )
+                })
+            }
         </div>
     )
 }

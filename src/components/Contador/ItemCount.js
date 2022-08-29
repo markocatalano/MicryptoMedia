@@ -16,7 +16,7 @@ export const ItemCount=({stock, inicial, agregarCarrito, imagen, nombre})=>{
     }
 
     const decrementar=()=>{
-        if (contador>1){
+        if (contador>0){
             setContador(contador-1)
         }
     }
@@ -30,11 +30,10 @@ export const ItemCount=({stock, inicial, agregarCarrito, imagen, nombre})=>{
                     <button type="button" className="btn btn-primary m-1" onClick={incrementar}>+</button>
                     <span className="border rounded p-2">{contador}</span>
                     <button type="button" className="btn btn-info m-1" onClick={decrementar}>-</button>
-                    <div>
-                        <button className="btn btn-success m-1" onClick={() => (agregarCarrito(contador))}>Agregar al Carrito</button>
+                    <div id="botonComprar">
+                        <button className="btn btn-success m-1" onClick={() => (agregarCarrito(contador)) }>Agregar al Carrito</button>
                     </div>
-
-                </div>  
+                </div>
             </div>
         </div>
     )

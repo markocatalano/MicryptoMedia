@@ -8,6 +8,7 @@ import btcMedias from './assets/btcMedias.webp'
 import ethMedias from './assets/ethMedias.webp'
 import tronMedias from './assets/tronMedias.webp'
 import neoMedias from './assets/neoMedias.webp'
+import { Landing } from './components/Landing/Landing';
 
 
 
@@ -21,7 +22,8 @@ function App() {
     <div className="App">
       <header>
         <NavBar/>
-        <ItemListContainer greeting='Bienvenidos'></ItemListContainer>
+        <Landing></Landing>
+        <ItemListContainer agregarCarrito={agregar}></ItemListContainer>
       </header>
       <div className='d-flex flex-row m-5'>
         <div className='p-2'>
