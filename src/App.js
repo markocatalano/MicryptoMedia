@@ -8,7 +8,7 @@ import btcMedias from './assets/btcMedias.webp'
 import ethMedias from './assets/ethMedias.webp'
 import tronMedias from './assets/tronMedias.webp'
 import neoMedias from './assets/neoMedias.webp'
-import { Landing } from './components/Landing/Landing';
+import { ItemDetailContainer } from './components/ItemDetailContainer/itemDetailContainer';
 
 
 
@@ -18,12 +18,16 @@ function App() {
     console.log('funcion agregar', productosAlCarrito);
   }
 
+  const agregar2=()=>{
+    console.log('funcion agregar items');
+  }
+
+
   return (
     <div className="App">
       <header>
         <NavBar/>
-        <Landing></Landing>
-        <ItemListContainer agregarCarrito={agregar}></ItemListContainer>
+        <ItemListContainer agregarCarrito={agregar2}></ItemListContainer>
       </header>
       <div className='d-flex flex-row m-5'>
         <div className='p-2'>
@@ -39,6 +43,9 @@ function App() {
         <ItemCount stock={10} inicial={1} agregarCarrito={agregar} imagen={neoMedias} nombre='MediasNeo'></ItemCount>
         </div>
       </div>
+      <main>
+        <ItemDetailContainer></ItemDetailContainer>
+      </main>
     </div>
   );
 }

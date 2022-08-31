@@ -4,7 +4,7 @@ import { Remeras } from '../Arreglo/Arreglo';
 import { ItemList } from '../ItemList/ItemList';
 
 
-export const ItemListContainer=(props)=>{
+export const ItemListContainer=({agregarCarrito})=>{
 
     const [remeras, setRemeras] = useState([]);
 
@@ -36,7 +36,7 @@ export const ItemListContainer=(props)=>{
             {
                 remeras.map((remeraCrypto)=>{
                     return(
-                            <ItemList remera={remeraCrypto}></ItemList>    
+                            <ItemList remera={remeraCrypto} agregarCarritos={agregarCarrito}></ItemList>    
                     )
                 })
             }
