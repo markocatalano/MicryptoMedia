@@ -3,50 +3,38 @@ import './App.css';
 import './components/NavBar/NavBar';
 import NavBar from './components/NavBar/NavBar';
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
-import { ItemCount } from './components/Contador/ItemCount';
-import btcMedias from './assets/btcMedias.webp'
-import ethMedias from './assets/ethMedias.webp'
-import tronMedias from './assets/tronMedias.webp'
-import neoMedias from './assets/neoMedias.webp'
 import { ItemDetailContainer } from './components/ItemDetailContainer/itemDetailContainer';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { Contacto } from './components/Contacto/Contacto';
+import { PaginaError } from './components/PaginaError/PaginaError';
+import { Promociones } from './components/Promociones/Promociones';
+import { MiCuenta } from './components/MiCuenta/MiCuenta';
+
 
 
 
 function App() {
 
-  const agregar=(productosAlCarrito)=>{
-    console.log('funcion agregar', productosAlCarrito);
-  }
-
-  const agregar2=()=>{
-    console.log('funcion agregar items');
-  }
-
 
   return (
-    <div className="App">
-      <header>
-        <NavBar/>
-        <ItemListContainer agregarCarrito={agregar2}></ItemListContainer>
-      </header>
-      <div className='d-flex flex-row m-5'>
-        <div className='p-2'>
-        <ItemCount stock={10} inicial={1} agregarCarrito={agregar} imagen={btcMedias} nombre='MediasBTC'></ItemCount>
-        </div>
-        <div className='p-2'>
-        <ItemCount stock={10} inicial={1} agregarCarrito={agregar} imagen={ethMedias} nombre='MediasETH'></ItemCount>
-        </div>
-        <div className='p-2'>
-        <ItemCount stock={10} inicial={1} agregarCarrito={agregar} imagen={tronMedias} nombre='MediasTron'></ItemCount>
-        </div>
-        <div className='p-2'>
-        <ItemCount stock={10} inicial={1} agregarCarrito={agregar} imagen={neoMedias} nombre='MediasNeo'></ItemCount>
-        </div>
+    <BrowserRouter>
+      <div className="App">
+        <header>
+          <NavBar />
+        </header>
+        <main>
+          <Routes>
+            <Route path='/' element={<ItemListContainer></ItemListContainer>} />
+            <Route path='/:tipoProducto' element={<ItemListContainer />} />
+            <Route path='/item/:ProductoId' element={<ItemDetailContainer />} />
+            <Route path='/contacto' element={<Contacto />} />
+            <Route path='/promociones' element={<Promociones />} />
+            <Route path='/micuenta' element={<MiCuenta />} />
+            <Route path='*' element={<PaginaError></PaginaError>} />
+          </Routes>
+        </main>
       </div>
-      <main>
-        <ItemDetailContainer></ItemDetailContainer>
-      </main>
-    </div>
+    </BrowserRouter>
   );
 }
 

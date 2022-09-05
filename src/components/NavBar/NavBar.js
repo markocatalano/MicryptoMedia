@@ -1,29 +1,31 @@
 
 import CartWidget from "../CartWidget/CartWidget";
+import {Link} from 'react-router-dom' 
 
 function NavBar(){
     return(
         <nav className="navbar navbar-expand-lg bg-warning">
             <div className="container-fluid">
-                <a style={{fontSize: '25px'}} className="navbar-brand">
-                <img style={{margin: '0px 10px'}} src="../.././logo.png" alt="" width="35" height="35" className="d-inline-block align-text-top"/><img/>
-                 TuCryptoMedia</a>
+                <Link to='/' className="navbar-brand">
+                    <a style={{ fontSize: '25px' }} className="navbar-brand">
+                        <img style={{ margin: '0px 10px' }} src="../.././logo2.png" alt="" width="250" height="35" className="d-inline-block align-text-top" /><img />
+                        </a>
+                </Link>
+               
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarNavAltMarkup">
-                    <div className="navbar-nav ">
-                        <a className="nav-link active" aria-current="page" href="#">OFERTAS!</a>
-                        <a className="nav-link" href="#">PROMOCIONES</a>
-                        <a className="nav-link" href="#">MI CUENTA</a>
-                        <a className="nav-link" href="#">F.A.Q</a>
+                <div className="collapse navbar-collapse d-flex justify-content-left mx-5" id="navbarNavAltMarkup">
+                    <div className="navbar-nav">
+                        <Link to='/'  className="nav-link">INICIO </Link>
+                        <Link to='/Remeras'  className="nav-link">REMERAS</Link>
+                        <Link to='/Medias'  className="nav-link">MEDIAS </Link>
+                        <Link to='/Buzos'  className="nav-link">BUZOS </Link>
+                        <Link to='/Promociones'  className="nav-link">PROMOCIONES </Link>
+                        <Link to='/MiCuenta'  className="nav-link">MI CUENTA </Link>
+                        <Link to='/Contacto'  className="nav-link">CONTACTO </Link>
                     </div>
                 </div>
-                {/* <form className="d-flex justify-content-center" role="search">
-                <input className="form-control me-2" type="search" placeholder="Busca tu crytpo media" aria-label="Search"/>
-                <button className="btn btn-outline-success" type="submit">Buscar</button>
-                
-                </form> */}
                 <CartWidget></CartWidget>
             </div>
         </nav>

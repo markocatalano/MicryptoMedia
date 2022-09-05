@@ -1,15 +1,24 @@
 import { useEffect, useState } from "react";
 import { Remeras } from "../Arreglo/Arreglo";
 import { ItemDetail } from "../ItemDetail/ItemDetail";
+import { useParams } from "react-router-dom";
+
+
 
 export const ItemDetailContainer =()=>{
+
+    console.log('remera detalle', useParams());
+
+    const {ProductoId}=useParams();
+
+    
 
     const [remera2, setRemera] = useState([]);
 
     const arregloRemeras=()=>{
         return new Promise((resolve, reject)=>{
                 setTimeout(()=>{
-                    resolve(Remeras[0])
+                    resolve(Remeras)
                 },2000)
         })
     }
@@ -19,8 +28,10 @@ export const ItemDetailContainer =()=>{
         const funcionAsinc= async ()=>{
             try {
                 const listRemeras= await arregloRemeras()
-                setRemera(listRemeras);
-                console.log(listRemeras)
+                const listaDetalle = listRemeras.filter(item => (item.id).toString() === ProductoId);
+                setRemera(listaDetalle);
+                console.log('listaDetalles', listaDetalle)
+
             } catch (error) {
                 console.log('hubo un problema')
             }
@@ -28,16 +39,22 @@ export const ItemDetailContainer =()=>{
 
         funcionAsinc();
 
-    })
+    },[ProductoId])
 
-    return(
-        <div className='d-flex flex-row m-5'>
+    return (
+        <div>
+            {
+                remera2.map((productosCrypto) => {
 
-            <ItemDetail remeraDetalle={remera2}></ItemDetail>
-
+                    return (
+                        <div className="p-2">
+                            <ItemDetail key={productosCrypto.id} productos={productosCrypto}></ItemDetail>
+                        </div>
+                    )
+                })
+            }
         </div>
     )
-
-
 }
+
 
