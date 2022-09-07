@@ -1,19 +1,14 @@
 import React from 'react'
-import { useState } from 'react';
+import { ItemCount } from '../Contador/ItemCount';
 
 export const ItemDetail = ({ productos }) => {
 
-    const [contador, setContadores] = useState(0);
 
-    const incrementar=()=>{ 
-            setContadores(contador+1)
-        
+    const agregar=(productosAlCarrito)=>{
+        console.log ("ProductosAgregadosItemDetail: ", productosAlCarrito)
     }
 
-    const decrementar=()=>{
-            setContadores(contador-1)
-    }
-
+    
     return (
 
         <div className="container">
@@ -31,12 +26,9 @@ export const ItemDetail = ({ productos }) => {
                             <h2 className="mt-5">
                                 {productos.precio}<small className="text-success">(36%off)</small>
                             </h2>
-                            <button type="button" className="btn btn-primary m-1" onClick={incrementar}>+</button>
-                            <span className="border rounded p-2">{contador}</span>
-                            <button type="button" className="btn btn-info m-1" onClick={decrementar}>-</button>
-                                <div>
-                                    <button className="btn btn-success m-1">Agregar al Carrito</button>
-                                </div>
+
+                            <ItemCount stock={10} inicial={1} agregarCarrito={agregar}></ItemCount>
+
                             <h3 className="box-title mt-5">Importante</h3>
                             <ul className="list-unstyled">
                                 <li><i className="fa fa-check text-success"></i>Envios a domicilio a todo el pais</li>

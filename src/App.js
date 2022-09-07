@@ -9,6 +9,7 @@ import { Contacto } from './components/Contacto/Contacto';
 import { PaginaError } from './components/PaginaError/PaginaError';
 import { Promociones } from './components/Promociones/Promociones';
 import { MiCuenta } from './components/MiCuenta/MiCuenta';
+import { Carrito } from './components/Carrito/Carrito';
 
 
 
@@ -30,6 +31,7 @@ function App() {
             <Route path='/contacto' element={<Contacto />} />
             <Route path='/promociones' element={<Promociones />} />
             <Route path='/micuenta' element={<MiCuenta />} />
+            <Route path='/carrito' element={<Carrito/>}/>
             <Route path='*' element={<PaginaError></PaginaError>} />
           </Routes>
         </main>

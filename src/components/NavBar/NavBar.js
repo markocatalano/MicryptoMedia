@@ -26,7 +26,7 @@ function NavBar(){
                         <Link to='/Contacto'  className="nav-link">CONTACTO </Link>
                     </div>
                 </div>
-                <CartWidget></CartWidget>
+                <Link to='/Carrito'><CartWidget></CartWidget></Link>
             </div>
         </nav>
     )

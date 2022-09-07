@@ -47,7 +47,7 @@ export const ItemDetailContainer =()=>{
                 remera2.map((productosCrypto) => {
 
                     return (
-                        <div className="p-2">
+                        <div className="p-2" key={productosCrypto.id}>
                             <ItemDetail key={productosCrypto.id} productos={productosCrypto}></ItemDetail>
                         </div>
                     )

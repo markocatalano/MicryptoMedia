@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { ItemCount } from '../Contador/ItemCount';
+import { Link } from "react-router-dom";
 
 export const Item = ({imagen, nombre, precio, id}) => {
 
@@ -28,8 +29,17 @@ export const Item = ({imagen, nombre, precio, id}) => {
       
 
     return (
-            <ItemCount stock={10} inicial={1} agregarCarrito={agregar} imagen={imagen} nombre={nombre} precio={precio} id={id}></ItemCount>
-        
+        <div className="card" style={{width: '18rem'}}>
+                <div className="card-body">
+                <Link to={`/item/${id}`}>
+                    <img className="card-img-top" src={imagen} alt="card"></img>
+                </Link>
+                    <h5 className="card-title">{nombre}</h5>
+                    <h5 className="card-title">{precio}</h5>
+                    <ItemCount stock={10} inicial={1} agregarCarrito={agregar} id={id}></ItemCount>  
+                </div>
+            </div>
+            
     )
 
 }
