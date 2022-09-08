@@ -18,9 +18,9 @@ function NavBar(){
                 <div className="collapse navbar-collapse d-flex justify-content-left mx-5" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
                         <Link to='/'  className="nav-link">INICIO </Link>
-                        <Link to='/Remeras'  className="nav-link">REMERAS</Link>
-                        <Link to='/Medias'  className="nav-link">MEDIAS </Link>
-                        <Link to='/Buzos'  className="nav-link">BUZOS </Link>
+                        <Link to='/category/Remeras'  className="nav-link">REMERAS</Link>
+                        <Link to='/category/Medias'  className="nav-link">MEDIAS </Link>
+                        <Link to='/category/Buzos'  className="nav-link">BUZOS </Link>
                         <Link to='/Promociones'  className="nav-link">PROMOCIONES </Link>
                         <Link to='/MiCuenta'  className="nav-link">MI CUENTA </Link>
                         <Link to='/Contacto'  className="nav-link">CONTACTO </Link>

@@ -1,11 +1,20 @@
 import React from 'react'
 import { ItemCount } from '../Contador/ItemCount';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 export const ItemDetail = ({ productos }) => {
 
 
-    const agregar=(productosAlCarrito)=>{
-        console.log ("ProductosAgregadosItemDetail: ", productosAlCarrito)
+    const [productosAlCarrito, setProductosAlCarrito] = useState(0)
+
+    const agregar=(productosPorComprar)=>{
+
+        setProductosAlCarrito(productosPorComprar)
+
+        console.log ("ProductosAgregadosItemDetail: ", productosPorComprar)
+
     }
 
     
@@ -26,8 +35,16 @@ export const ItemDetail = ({ productos }) => {
                             <h2 className="mt-5">
                                 {productos.precio}<small className="text-success">(36%off)</small>
                             </h2>
+                            {
+                                productosAlCarrito === 0 ?
 
-                            <ItemCount stock={10} inicial={1} agregarCarrito={agregar}></ItemCount>
+                                    <ItemCount stock={productos.stock} inicial={1} agregarCarrito={agregar}></ItemCount>
+
+                                    :
+                                    <Link to='/Carrito' >
+                                        <button className="btn btn-success m-1">Finalizar Compra</button>
+                                    </Link>
+                            }
 
                             <h3 className="box-title mt-5">Importante</h3>
                             <ul className="list-unstyled">

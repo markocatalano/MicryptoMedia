@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { ItemCount } from '../Contador/ItemCount';
 import { Link } from "react-router-dom";
 
-export const Item = ({imagen, nombre, precio, id}) => {
+export const Item = ({imagen, nombre, precio, id, stock}) => {
 
  
     const [stockRenovado, setStockRenovado] = useState(0)
@@ -36,7 +36,7 @@ export const Item = ({imagen, nombre, precio, id}) => {
                 </Link>
                     <h5 className="card-title">{nombre}</h5>
                     <h5 className="card-title">{precio}</h5>
-                    <ItemCount stock={10} inicial={1} agregarCarrito={agregar} id={id}></ItemCount>  
+                    <ItemCount stock={stock} inicial={1} agregarCarrito={agregar} id={id}></ItemCount>  
                 </div>
             </div>
             
