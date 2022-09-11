@@ -10,6 +10,7 @@ import { PaginaError } from './components/PaginaError/PaginaError';
 import { Promociones } from './components/Promociones/Promociones';
 import { MiCuenta } from './components/MiCuenta/MiCuenta';
 import { Carrito } from './components/Carrito/Carrito';
+import { CartProvider } from './context/CartContext';
 
 
 
@@ -18,25 +19,28 @@ function App() {
 
 
   return (
-    <BrowserRouter>
-      <div className="App">
-        <header>
-          <NavBar />
-        </header>
-        <main>
-          <Routes>
-            <Route path='/' element={<ItemListContainer></ItemListContainer>} />
-            <Route path='/category/:tipoProducto' element={<ItemListContainer />} />
-            <Route path='/item/:ProductoId' element={<ItemDetailContainer />} />
-            <Route path='/contacto' element={<Contacto />} />
-            <Route path='/promociones' element={<Promociones />} />
-            <Route path='/micuenta' element={<MiCuenta />} />
-            <Route path='/carrito' element={<Carrito/>}/>
-            <Route path='*' element={<PaginaError></PaginaError>} />
-          </Routes>
-        </main>
-      </div>
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <div className="App">
+
+          <header>
+            <NavBar />
+          </header>
+          <main>
+            <Routes>
+              <Route path='/' element={<ItemListContainer></ItemListContainer>} />
+              <Route path='/category/:tipoProducto' element={<ItemListContainer />} />
+              <Route path='/item/:ProductoId' element={<ItemDetailContainer />} />
+              <Route path='/contacto' element={<Contacto />} />
+              <Route path='/promociones' element={<Promociones />} />
+              <Route path='/micuenta' element={<MiCuenta />} />
+              <Route path='/carrito' element={<Carrito />} />
+              <Route path='*' element={<PaginaError></PaginaError>} />
+            </Routes>
+          </main>
+        </div>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

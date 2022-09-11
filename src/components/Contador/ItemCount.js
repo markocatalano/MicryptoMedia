@@ -27,7 +27,9 @@ export const ItemCount=({stock, inicial, agregarCarrito})=>{
             <button type="button" className="btn btn-primary m-1" onClick={incrementar}>+</button>
             <span className="border rounded p-2">{contador}</span>
             <button type="button" className="btn btn-info m-1" onClick={decrementar}>-</button>
-            <button className="btn btn-success m-1" onClick={() => agregarCarrito(contador)}>Agregar al Carrito</button>
+            <div>
+                <button className="btn btn-success m-1" onClick={() => agregarCarrito(contador)}>Agregar al Carrito</button>
+            </div>
 
         </div>
 

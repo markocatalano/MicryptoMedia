@@ -48,7 +48,7 @@ export const ItemDetailContainer =()=>{
 
                     return (
                         <div className="p-2" key={productosCrypto.id}>
-                            <ItemDetail key={productosCrypto.id} productos={productosCrypto}></ItemDetail>
+                            <ItemDetail key={productosCrypto.id} producto={productosCrypto}></ItemDetail>
                         </div>
                     )
                 })
