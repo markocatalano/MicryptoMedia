@@ -12,7 +12,7 @@ export const Item = ({imagen, nombre, precio, id}) => {
                 <Link to={`/item/${id}`} style={{ textDecoration: 'none', color: "rgb(95, 95, 95)"}}>
                     <img className="card-img-top" src={imagen} alt="card"></img>
                     <h5 className="card-title">{nombre}</h5>
-                    <h5 className="card-title">{precio}</h5>
+                    <h5 className="card-title">${precio}</h5>
                     <button className="btn btn-warning">Mas Detalles</button>
                 </Link>
                 </div>

@@ -7,7 +7,7 @@ import { CartContext } from '../../context/CartContext';
 
 export const ItemDetail = ({ producto }) => {
 
-    const {addProduct} = useContext(CartContext);
+    const {addProduct, isInCard} = useContext(CartContext);
 
 
     const [productosAlCarrito, setProductosAlCarrito] = useState(0)
@@ -17,6 +17,8 @@ export const ItemDetail = ({ producto }) => {
         const newProduct={...producto, quantity: productosPorComprar}
         console.log('newProduct', newProduct)
         addProduct(newProduct)
+        isInCard(newProduct)
+        
 
         setProductosAlCarrito(productosPorComprar)
 
@@ -40,7 +42,7 @@ export const ItemDetail = ({ producto }) => {
                             <h2 className="box-title mt-5">{producto.nombre}</h2>
                             <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
                             <h2 className="mt-5">
-                                {producto.precio}<small className="text-success">(36%off)</small>
+                                ${producto.precio}<small className="text-success">(36%off)</small>
                             </h2>
                             {
                                 productosAlCarrito === 0 ?
