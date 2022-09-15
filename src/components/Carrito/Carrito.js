@@ -45,7 +45,7 @@ export const Carrito = () => {
           :
           <div className="container mt-2 px-2 rounded cart" >
             <div className="d-flex justify-content-end align-items-end mt-2 p-2 items rounded shadow p-3 mb- bg-white rounded">
-              <span>Total: ${TotalProductos()}</span>
+              <span className="font-weight-bold">Total: ${TotalProductos()}</span>
             </div>
             <button onClick={() => clear()} className="btn btn-warning mt-3">Vaciar Carrito</button>
           </div>

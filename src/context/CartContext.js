@@ -10,11 +10,13 @@ export const CartProvider = ({children})=>{
     
 
     const addProduct = (product) => {
-        const cart = productCartList.find(e => e.id === product.id)
-        if (cart !== undefined) {
+        const newList= [...productCartList]
+        const cart = productCartList.findIndex(e => e.id === product.id)
+        if (cart !== -1) {
             console.log('cart', cart)
-            cart.quantity = (cart.quantity + product.quantity)
-            console.log('cart cantidad', cart)
+            newList[cart].quantity = (newList[cart].quantity + product.quantity)
+            console.log('cart cantidad', newList[cart].quantity)
+            setProductCartList(newList)
         }
         else {
             const newList = [...productCartList, product];
@@ -42,17 +44,17 @@ export const CartProvider = ({children})=>{
 
 
     const TotalProductos = ()=>{
-        const totalProductos = productCartList.reduce((acc,item)=>acc + (item.quantity*item.precio), 0)
-        if (totalProductos!==0){
+        const precioTotal = productCartList.reduce((acc,item)=>acc + (item.quantity*item.precio), 0)
+        if (precioTotal!==0){
         return (
-            totalProductos
+            precioTotal
         )
         }
     }
 
     const getTotalProducts = ()=>{
         const totalProducts = productCartList.reduce((acc,item)=>acc + item.quantity, 0)
-        if (totalProducts!==0){
+        if (totalProducts!==0){ 
         return (
             totalProducts
         )
