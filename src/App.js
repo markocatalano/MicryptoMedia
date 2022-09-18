@@ -11,6 +11,7 @@ import { Promociones } from './components/Promociones/Promociones';
 import { MiCuenta } from './components/MiCuenta/MiCuenta';
 import { Carrito } from './components/Carrito/Carrito';
 import { CartProvider } from './context/CartContext';
+import { PaginaFirebase } from './components/Firebase/PaginaFirebase';
 
 
 
@@ -36,6 +37,7 @@ function App() {
               <Route path='/micuenta' element={<MiCuenta />} />
               <Route path='/carrito' element={<Carrito />} />
               <Route path='*' element={<PaginaError></PaginaError>} />
+              <Route path="/firebase" element={<PaginaFirebase/>}/>
             </Routes>
           </main>
         </div>

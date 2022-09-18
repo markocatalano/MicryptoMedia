@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Remeras } from '../Arreglo/Arreglo';
 import { ItemList } from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../../utils/firebase';
 
 
 export const ItemListContainer=()=>{
@@ -12,37 +13,32 @@ export const ItemListContainer=()=>{
 
     const [remeras, setRemeras] = useState([]);
 
-    const listadoRemeras =()=>{
-        return new Promise((resolve, reject)=>{
-            setTimeout(()=>{
-                resolve(Remeras)
-            }, 2000);
-                
-        })
-    }
 
     useEffect(()=>{
-        const funcionAsincrona= async()=>{
-            try {
-                const listado = await listadoRemeras()
-                if (tipoProducto === undefined) {
-                    setRemeras(listado);
-                    console.log('listado', listado)
-                }
-                else {
-                    const listaFiltrada = listado.filter(item => item.categoria === tipoProducto);
-                    console.log('listaFiltrada', listaFiltrada)
-                    setRemeras(listaFiltrada);
-                    console.log('listado', listado)
-                }
-            }
-            catch (error) {
-                console.log('Hubo un error')
-            }
-        }
-        funcionAsincrona();
-    },[tipoProducto])
+        const getData = async()=>{
+            try{
+            let queryRef=""
 
+            if (tipoProducto === undefined) {
+                 queryRef = collection(db, "items");
+            }
+            else {
+                queryRef = query(collection(db, "items"),where("categoria", "==",tipoProducto))
+            }
+            //consulta o referencia a la base de datos:
+            const respuesta= await getDocs(queryRef);
+            const docs = respuesta.docs;
+            const data= docs.map(doc=>{return {...doc.data(), id: doc.id}})
+            setRemeras(data)
+            
+        } catch(error){
+            console.log(error)
+        }}
+        getData()
+    }, [tipoProducto])
+
+    console.log("productos",remeras)
+        
     return(
             <div className="d-flex flex-wrap my-4 mx-5">
                 {

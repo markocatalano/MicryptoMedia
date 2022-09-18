@@ -1,60 +1,50 @@
 import { useEffect, useState } from "react";
-import { Remeras } from "../Arreglo/Arreglo";
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
+import { doc,getDoc } from "firebase/firestore";
+import { db } from "../../utils/firebase";
 
-
-
+//desafio aca reeemplazar promesas por Paginafirebase para llamar un documento, y en vez de pasar un id fijo, paso el id que solicita el usuario cuando aprieta. 
 export const ItemDetailContainer =()=>{
 
     console.log('remera detalle', useParams());
 
     const {ProductoId}=useParams();
 
-    
-
     const [remera2, setRemera] = useState([]);
 
-    const arregloRemeras=()=>{
-        return new Promise((resolve, reject)=>{
-                setTimeout(()=>{
-                    resolve(Remeras)
-                },2000)
-        })
-    }
 
-
-    useEffect(()=>{
-        const funcionAsinc= async ()=>{
+    useEffect(() => {
+        const getDocumento = async () => {
             try {
-                const listRemeras= await arregloRemeras()
-                const listaDetalle = listRemeras.filter(item => (item.id).toString() === ProductoId);
-                setRemera(listaDetalle);
-                console.log('listaDetalles', listaDetalle)
+                //consulta o referencia a la base de datos:
+                const query = doc(db, "items", ProductoId);
+                const respuesta = await getDoc(query);
+                const documento = {
+                    ...respuesta.data(),
+                    id: respuesta.id
+                }
+                console.log("Producto", documento)
+                setRemera(documento)
 
             } catch (error) {
                 console.log('hubo un problema')
+
             }
         }
+        getDocumento()
+    }, [ProductoId])
 
-        funcionAsinc();
-
-    },[ProductoId])
 
     return (
-        <div>
-            {
-                remera2.map((productosCrypto) => {
-
-                    return (
-                        <div className="p-2" key={productosCrypto.id}>
-                            <ItemDetail key={productosCrypto.id} producto={productosCrypto}></ItemDetail>
-                        </div>
-                    )
-                })
-            }
+        <div className="p-2" key={remera2.id}>
+            <ItemDetail key={remera2.id} producto={remera2}></ItemDetail>
         </div>
-    )
+        )
+
+
+ 
+     
 }
 
 
