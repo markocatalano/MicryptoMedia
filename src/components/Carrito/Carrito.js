@@ -1,14 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useContext } from 'react'
 import { CartContext } from '../../context/CartContext'
 import { Link } from 'react-router-dom'
 import './Carrito.css'
+import { db } from '../../utils/firebase'
+import { collection, addDoc } from 'firebase/firestore'
+import { Formulario } from '../Formulario/Formulario'
 
 export const Carrito = () => {
 
   const {productCartList, deleteProduct, clear, TotalProductos} = useContext(CartContext)  
 
- 
+ /*  const [idOrder, setIdOrder]= useState("")
+
+ const sendOrder=(e)=>{
+  e.preventDefault()
+  const order = {
+    buyer:{
+      name: e.target[0].value,
+      phone:  e.target[1].value,
+      mail:  e.target[2].value
+    },
+    items: productCartList,
+    total: TotalProductos(),
+   }
+
+   const queryRef= collection(db, "orders");
+   addDoc(queryRef, order).then(respuesta=>setIdOrder(respuesta.id))
+
+   console.log(order)
+
+ } */
 
   return (
     <div className="container mt-5 p-3 rounded cart" >
@@ -48,8 +70,11 @@ export const Carrito = () => {
               <span className="font-weight-bold">Total: ${TotalProductos()}</span>
             </div>
             <button onClick={() => clear()} className="btn btn-warning mt-3">Vaciar Carrito</button>
+            <Formulario></Formulario>
           </div>
+          
       }
+      
     </div>
 
 
