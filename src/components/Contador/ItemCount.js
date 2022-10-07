@@ -2,21 +2,21 @@
 import { useState } from "react"
 
 
-export const ItemCount=({stock, inicial, agregarCarrito})=>{
+export const ItemCount = ({ stock, inicial, agregarCarrito }) => {
 
 
-    const [contador, setContador] = useState(stock==0 ? inicial==0 : inicial);
+    const [contador, setContador] = useState(stock === 0 ? inicial === 0 : inicial);
 
-    const incrementar=()=>{ 
-        if (contador<stock){
-            setContador(contador+1)
-            
+    const incrementar = () => {
+        if (contador < stock) {
+            setContador(contador + 1)
+
         }
     }
 
-    const decrementar=()=>{
-        if (contador>1){
-            setContador(contador-1)
+    const decrementar = () => {
+        if (contador > 1) {
+            setContador(contador - 1)
         }
     }
 

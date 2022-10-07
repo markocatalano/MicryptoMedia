@@ -4,12 +4,12 @@ import { useParams } from "react-router-dom";
 import { doc,getDoc } from "firebase/firestore";
 import { db } from "../../utils/firebase";
 
-//desafio aca reeemplazar promesas por Paginafirebase para llamar un documento, y en vez de pasar un id fijo, paso el id que solicita el usuario cuando aprieta. 
-export const ItemDetailContainer =()=>{
+
+export const ItemDetailContainer = () => {
 
     console.log('remera detalle', useParams());
 
-    const {ProductoId}=useParams();
+    const { ProductoId } = useParams();
 
     const [remera2, setRemera] = useState([]);
 
@@ -40,11 +40,11 @@ export const ItemDetailContainer =()=>{
         <div className="p-2" key={remera2.id}>
             <ItemDetail key={remera2.id} producto={remera2}></ItemDetail>
         </div>
-        )
+    )
 
 
- 
-     
+
+
 }
 
 

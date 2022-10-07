@@ -1,3 +1,25 @@
+# TU CRYPTO MEDIA
+
+##### Tu crypto media es una pagina de e-commerce donde usted puede comprar indumentaria relacionada con 
+##### el universo de las cryptos. Espero que la disfruten, cualquier consulta estamos a su disposicion.
+
+### Librerias y Plugins Utilizados:
+
+    @testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "firebase": "^9.10.0",
+    "react": "^18.2.0",
+    "react-date-picker": "^9.0.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "sweetalert2": "^11.4.37",
+    "sweetalert2-react-content": "^5.0.3",
+    "web-vitals": "^2.1.4"
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
